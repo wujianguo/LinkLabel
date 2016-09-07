@@ -10,9 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label: LinkLabel!
+    @IBOutlet weak var label2: LinkLabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let text = "hello my friend @user #hello #you are big #so#sns"
+        label.adapters = [LinkAdapter.hashtagLinkAdapter()]
+        label.text = text
+
+        label2.text = text
+        let link1 = LinkItem(adapter: LinkAdapter.hashtagLinkAdapter(), value: nil, text: "my", range: NSRange(location: 6, length: 2))
+        label2.linkItems = [link1]
+        label2.updateUI()
     }
 
     override func didReceiveMemoryWarning() {
